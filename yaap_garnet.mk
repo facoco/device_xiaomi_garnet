@@ -8,16 +8,16 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
+# Inherit some common YAAP stuff.
 TARGET_SUPPORTS_OMX_SERVICE := false
 TARGET_BOOT_ANIMATION_RES := 1080
-
-# Inherit some common aosp stuff.
-$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
+TARGET_EXCLUDES_AUDIOFX := true
+$(call inherit-product, vendor/yaap/config/common_full_phone.mk)
 
 # Inherit from garnet device
 $(call inherit-product, device/xiaomi/garnet/device.mk)
 
-PRODUCT_NAME := aosp_garnet
+PRODUCT_NAME := yaap_garnet
 PRODUCT_DEVICE := garnet
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_BRAND := Redmi

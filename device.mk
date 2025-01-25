@@ -4,9 +4,6 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-# MiuiCamera setup
-$(call inherit-product-if-exists, vendor/xiaomi/garnet-miuicamera/products/miuicamera.mk)
-
 # Enable virtual A/B OTA
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
 
@@ -411,9 +408,16 @@ PRODUCT_PACKAGES += \
     WifiOverlayGarnetRedmiCN \
     WifiOverlayGarnetXIG05
 
+# Platform
+TARGET_BOARD_PLATFORM := parrot
+
 # Parts
 PRODUCT_PACKAGES += \
     XiaomiParts
+
+# Debloater
+PRODUCT_PACKAGES += \
+    Debloater
 
 # Partitions
 PRODUCT_PACKAGES += \
@@ -484,27 +488,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     hardware/xiaomi
-
-# Telephony
-PRODUCT_PACKAGES += \
-    extphonelib \
-    extphonelib-product \
-    extphonelib.xml \
-    extphonelib_product.xml \
-    ims-ext-common \
-    ims_ext_common.xml \
-    qti-telephony-hidl-wrapper \
-    qti-telephony-hidl-wrapper-prd \
-    qti_telephony_hidl_wrapper.xml \
-    qti_telephony_hidl_wrapper_prd.xml \
-    qti-telephony-utils \
-    qti-telephony-utils-prd \
-    qti_telephony_utils.xml \
-    qti_telephony_utils_prd.xml \
-    telephony-ext
-
-PRODUCT_BOOT_JARS += \
-    telephony-ext
 
 $(foreach sku, GL JP, \
     $(eval PRODUCT_COPY_FILES += \
